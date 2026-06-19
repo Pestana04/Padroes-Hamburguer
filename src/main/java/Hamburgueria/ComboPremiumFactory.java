@@ -6,7 +6,8 @@ import Hamburgueria.interfaces.ItemCardapio;
 public class ComboPremiumFactory implements ComboFactoryInterface {
 
     public ItemCardapio criarHamburguer() {
-        return new Hamburguer("X-Bacon Premium", 30.0);
+        PreparoHamburguer preparo = new PreparoHamburguerPremium();
+        return preparo.preparar();
     }
 
     public ItemCardapio criarAcompanhamento() {
