@@ -80,6 +80,23 @@ As demais classes ficam no pacote principal:
 Hamburgueria
 ```
 
+## Diagrama Geral do Projeto
+
+Abaixo está o diagrama geral do sistema de hamburgueria, representando a organização das principais classes e a aplicação dos padrões de projeto no domínio da aplicação.
+
+O diagrama foi organizado por grupos funcionais, como criação de pedidos, montagem de hambúrgueres, pagamentos, estados do pedido, comunicação entre setores, entregas, cardápio, relatórios e cálculo de preço. Além disso, as cores destacam os diferentes padrões de projeto utilizados no sistema.
+
+<p align="center">
+  <img src="docs/diagrama-final.png" alt="Diagrama geral do sistema de hamburgueria com padrões de projeto" width="100%">
+</p>
+
+### Observação sobre o Diagrama
+
+O projeto não foi separado em pacotes com os nomes dos padrões, pois a proposta foi manter a organização próxima de uma aplicação real. Dessa forma, os padrões foram aplicados dentro das classes do domínio da hamburgueria, como `Pedido`, `Hamburguer`, `Combo`, `Estoque`, `PedidoFacade`, `Funcionario`, `Cardapio` e outras.
+
+A legenda presente no diagrama indica qual cor representa cada padrão de projeto implementado.
+
+
 ---
 
 ## Padrões de Projeto Implementados
