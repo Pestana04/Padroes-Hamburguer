@@ -8,10 +8,12 @@ import java.util.List;
 public class Pedido {
 
     private Cliente cliente;
+    private String tipoPedido;
     private List<ItemCardapio> itens = new ArrayList<ItemCardapio>();
 
-    public Pedido(Cliente cliente) {
+    public Pedido(Cliente cliente, String tipoPedido) {
         this.cliente = cliente;
+        this.tipoPedido = tipoPedido;
     }
 
     public void adicionarItem(ItemCardapio item) {
@@ -29,7 +31,7 @@ public class Pedido {
     }
 
     public String getResumo() {
-        String resumo = "Pedido de " + cliente.getNome();
+        String resumo = "Pedido " + tipoPedido + " de " + cliente.getNome();
 
         for (ItemCardapio item : itens) {
             resumo += " | " + item.getDescricao();
@@ -42,5 +44,9 @@ public class Pedido {
 
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public String getTipoPedido() {
+        return tipoPedido;
     }
 }

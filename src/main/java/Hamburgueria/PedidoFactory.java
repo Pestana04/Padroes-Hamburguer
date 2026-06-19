@@ -1,4 +1,6 @@
 package Hamburgueria;
 
-public class PedidoFactory {
+public abstract class PedidoFactory {
+
+    public abstract Pedido criarPedido(Cliente cliente);
 }

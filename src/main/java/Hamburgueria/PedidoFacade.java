@@ -2,36 +2,47 @@ package Hamburgueria;
 
 public class PedidoFacade {
 
-    public Pedido criarPedidoSimples(String nomeCliente, String telefoneCliente) {
+    public Pedido criarPedidoBalcaoTradicional(String nomeCliente, String telefoneCliente) {
         Cliente cliente = new Cliente(nomeCliente, telefoneCliente);
-        Pedido pedido = new Pedido(cliente);
 
-        Hamburguer hamburguer = new Hamburguer("X-Burguer", 20.0);
-        pedido.adicionarItem(hamburguer);
+        PedidoFactory pedidoFactory = new PedidoBalcaoFactory();
+        Pedido pedido = pedidoFactory.criarPedido(cliente);
 
-        Estoque.getInstancia().baixarProduto("Pao", 1);
-        Estoque.getInstancia().baixarProduto("Carne", 1);
-        Estoque.getInstancia().baixarProduto("Queijo", 1);
+        ComboFactory comboFactory = new ComboFactory();
+        pedido.adicionarItem(comboFactory.criarComboTradicional());
+
+        baixarEstoqueComboTradicional();
 
         return pedido;
     }
 
-    public Pedido criarPedidoCombo(String nomeCliente, String telefoneCliente) {
+    public Pedido criarPedidoDeliveryPremium(String nomeCliente, String telefoneCliente) {
         Cliente cliente = new Cliente(nomeCliente, telefoneCliente);
-        Pedido pedido = new Pedido(cliente);
 
-        Combo combo = new Combo("Combo Tradicional");
-        combo.adicionarItem(new Hamburguer("X-Burguer", 20.0));
-        combo.adicionarItem(new Hamburguer("Batata", 10.0));
-        combo.adicionarItem(new Hamburguer("Refrigerante", 8.0));
+        PedidoFactory pedidoFactory = new PedidoDeliveryFactory();
+        Pedido pedido = pedidoFactory.criarPedido(cliente);
 
-        pedido.adicionarItem(combo);
+        ComboFactory comboFactory = new ComboFactory();
+        pedido.adicionarItem(comboFactory.criarComboPremium());
 
-        Estoque.getInstancia().baixarProduto("Pao", 1);
-        Estoque.getInstancia().baixarProduto("Carne", 1);
-        Estoque.getInstancia().baixarProduto("Batata", 1);
-        Estoque.getInstancia().baixarProduto("Refrigerante", 1);
+        baixarEstoqueComboPremium();
 
         return pedido;
+    }
+
+    private void baixarEstoqueComboTradicional() {
+        Estoque.getInstancia().baixarProduto("Pao", 1);
+        Estoque.getInstancia().baixarProduto("Carne", 1);
+        Estoque.getInstancia().baixarProduto("Queijo", 1);
+        Estoque.getInstancia().baixarProduto("Batata", 1);
+        Estoque.getInstancia().baixarProduto("Refrigerante", 1);
+    }
+
+    private void baixarEstoqueComboPremium() {
+        Estoque.getInstancia().baixarProduto("Pao", 1);
+        Estoque.getInstancia().baixarProduto("Carne", 1);
+        Estoque.getInstancia().baixarProduto("Bacon", 1);
+        Estoque.getInstancia().baixarProduto("Batata", 1);
+        Estoque.getInstancia().baixarProduto("Milkshake", 1);
     }
 }
