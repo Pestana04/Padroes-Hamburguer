@@ -1,5 +1,7 @@
 package Hamburgueria;
 
+import Hamburgueria.interfaces.VisitorCardapio;
+
 public class Ingrediente {
 
     private String nome;
@@ -20,5 +22,9 @@ public class Ingrediente {
 
     public String getDescricao() {
         return nome + " (" + tipo + ")";
+    }
+
+    public String aceitar(VisitorCardapio visitor) {
+        return visitor.exibirIngrediente(this);
     }
 }

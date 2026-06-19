@@ -1,11 +1,12 @@
 package Hamburgueria;
 
 import Hamburgueria.interfaces.ItemCardapio;
+import Hamburgueria.interfaces.VisitorCardapio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hamburguer implements ItemCardapio {
+public class Hamburguer implements ItemCardapio, Cloneable {
 
     private String nome;
     private double preco;
@@ -48,7 +49,25 @@ public class Hamburguer implements ItemCardapio {
         return preco;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public List<Ingrediente> getIngredientes() {
         return ingredientes;
+    }
+
+    public String aceitar(VisitorCardapio visitor) {
+        return visitor.exibirHamburguer(this);
+    }
+
+    public Hamburguer clone() {
+        try {
+            Hamburguer hamburguerClone = (Hamburguer) super.clone();
+            hamburguerClone.ingredientes = new ArrayList<Ingrediente>(this.ingredientes);
+            return hamburguerClone;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
