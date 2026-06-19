@@ -1,6 +1,7 @@
 package Hamburgueria;
 
 import Hamburgueria.interfaces.EstadoPedido;
+import Hamburgueria.interfaces.FormaPagamento;
 import Hamburgueria.interfaces.ItemCardapio;
 import Hamburgueria.interfaces.ObservadorPedido;
 
@@ -14,6 +15,7 @@ public class Pedido {
     private List<ItemCardapio> itens = new ArrayList<ItemCardapio>();
     private EstadoPedido estado;
     private List<ObservadorPedido> observadores = new ArrayList<ObservadorPedido>();
+    private String pagamento;
 
     public Pedido(Cliente cliente, String tipoPedido) {
         this.cliente = cliente;
@@ -60,6 +62,15 @@ public class Pedido {
         return estado.cancelar(this);
     }
 
+    public String realizarPagamento(FormaPagamento formaPagamento) {
+        this.pagamento = formaPagamento.pagar(getValorTotal());
+        return this.pagamento;
+    }
+
+    public String getPagamento() {
+        return pagamento;
+    }
+
     public double getValorTotal() {
         double total = 0.0;
 
@@ -79,6 +90,10 @@ public class Pedido {
 
         resumo += " | Situação: " + getNomeEstado();
         resumo += " | Total: " + getValorTotal();
+
+        if (pagamento != null) {
+            resumo += " | " + pagamento;
+        }
 
         return resumo;
     }
