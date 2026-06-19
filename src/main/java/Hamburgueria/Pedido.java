@@ -67,6 +67,18 @@ public class Pedido {
         return this.pagamento;
     }
 
+    public PedidoMemento salvarEstado() {
+        return new PedidoMemento(this.itens, this.estado, this.pagamento);
+    }
+
+    public void restaurarEstado(PedidoMemento pedidoMemento) {
+        this.itens = new ArrayList<ItemCardapio>(pedidoMemento.getItens());
+        this.estado = pedidoMemento.getEstado();
+        this.pagamento = pedidoMemento.getPagamento();
+
+        notificarObservadores("Pedido restaurado para " + estado.getEstado());
+    }
+
     public String getPagamento() {
         return pagamento;
     }
