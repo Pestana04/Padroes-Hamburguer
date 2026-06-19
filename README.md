@@ -42,7 +42,6 @@ O objetivo do sistema é representar uma hamburgueria capaz de:
 
 ## Estrutura do Projeto
 
-O projeto foi organizado por domínio, e não por nome de padrão. Essa decisão foi tomada para manter o sistema mais próximo de uma aplicação real.
 
 ```text
 src
@@ -87,14 +86,22 @@ Abaixo está o diagrama geral do sistema de hamburgueria, representando a organi
 O diagrama foi organizado por grupos funcionais, como criação de pedidos, montagem de hambúrgueres, pagamentos, estados do pedido, comunicação entre setores, entregas, cardápio, relatórios e cálculo de preço. Além disso, as cores destacam os diferentes padrões de projeto utilizados no sistema.
 
 <p align="center">
-  <img src="docs/diagrama-final.png" alt="Diagrama geral do sistema de hamburgueria com padrões de projeto" width="100%">
+  <a href="docs/diagrama-final.png">
+    <img src="docs/diagrama-final.png" alt="Diagrama geral do sistema de hamburgueria com padrões de projeto" width="100%">
+  </a>
+</p>
+
+<p align="center">
+  <a href="docs/diagrama-final.png">
+    <img src="https://img.shields.io/badge/Abrir%20diagrama-Tamanho%20completo-blue?style=for-the-badge" alt="Abrir diagrama em tamanho completo">
+  </a>
 </p>
 
 ### Observação sobre o Diagrama
 
-O projeto não foi separado em pacotes com os nomes dos padrões, pois a proposta foi manter a organização próxima de uma aplicação real. Dessa forma, os padrões foram aplicados dentro das classes do domínio da hamburgueria, como `Pedido`, `Hamburguer`, `Combo`, `Estoque`, `PedidoFacade`, `Funcionario`, `Cardapio` e outras.
-
 A legenda presente no diagrama indica qual cor representa cada padrão de projeto implementado.
+
+Para visualizar melhor o diagrama, basta clicar na imagem ou no botão **Abrir diagrama - Tamanho completo**.
 
 
 ---
