@@ -26,6 +26,14 @@ public class HamburguerBuilder {
     }
 
     public Hamburguer build() {
+        if (nome == null || nome.trim().equals("")) {
+            throw new IllegalArgumentException("Nome inválido");
+        }
+
+        if (preco <= 0.0) {
+            throw new IllegalArgumentException("Preço inválido");
+        }
+
         return new Hamburguer(nome, preco, ingredientes);
     }
 }
